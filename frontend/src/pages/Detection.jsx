@@ -1,4 +1,4 @@
-ï»¿
+
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocationContext } from "../context/LocationContext.jsx";
@@ -21,7 +21,7 @@ import {
   FileCheck2,
 } from "lucide-react";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://roadrakshak-ai.onrender.com";
 
 const CLASS_INFO = {
   NORMAL_ROAD: {
@@ -346,7 +346,7 @@ export default function Detection() {
                     {file.name}
                   </p>
                   <p className="mt-1 text-xs text-slate-500">
-                    {(file.size / (1024 * 1024)).toFixed(2)} MB Â·{" "}
+                    {(file.size / (1024 * 1024)).toFixed(2)} MB ·{" "}
                     {source === "camera" ? "Camera capture" : "Gallery image"}
                   </p>
                 </div>
@@ -799,10 +799,10 @@ export default function Detection() {
 
         <footer className="mt-12 border-t border-white/5 pt-6 text-center">
           <p className="text-xs font-semibold tracking-[0.25em] text-slate-600">
-            ROADRAKSHAK AI Â· INTELLIGENT ROAD SAFETY SYSTEM
+            ROADRAKSHAK AI · INTELLIGENT ROAD SAFETY SYSTEM
           </p>
           <p className="mt-2 text-xs text-slate-700">
-            Three-class road surface detection Â· Backend-connected prototype
+            Three-class road surface detection · Backend-connected prototype
           </p>
         </footer>
       </div>

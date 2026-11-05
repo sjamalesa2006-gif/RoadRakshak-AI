@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, RefreshCw, MapPin, CheckCircle2, Clock3, AlertTriangle } from "lucide-react";
 
-const API = "http://127.0.0.1:8000";
+const API = "https://roadrakshak-ai.onrender.com";
 const statuses = ["Pending verification", "Verified", "Resolved"];
 
 export default function Authority() {

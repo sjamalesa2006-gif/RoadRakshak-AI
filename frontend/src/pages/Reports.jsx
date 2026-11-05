@@ -19,7 +19,7 @@ import {
   Activity,
 } from "lucide-react";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://roadrakshak-ai.onrender.com";
 
 const STATUS_OPTIONS = [
   "Pending verification",

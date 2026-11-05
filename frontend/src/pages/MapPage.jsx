@@ -1,4 +1,4 @@
-ï»¿
+
 import { useState, useEffect, useCallback } from "react";
 import {
   APIProvider,
@@ -8,9 +8,9 @@ import {
   useMap,
 } from "@vis.gl/react-google-maps";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://roadrakshak-ai.onrender.com";
 
-// Illustrative markers only â€” not real verified road defects.
+// Illustrative markers only — not real verified road defects.
 const sampleReports = [
   {
     id: "sample-1",
@@ -450,7 +450,7 @@ export default function MapPage() {
                   onClick={fetchReports}
                   className="rounded-xl border border-white/10 px-4 py-3 text-sm font-semibold text-cyan-300 hover:bg-white/5"
                 >
-                  â†» Refresh
+                  ? Refresh
                 </button>
 
                 <button
@@ -459,7 +459,7 @@ export default function MapPage() {
                   disabled={isLocating}
                   className="rounded-xl bg-cyan-400 px-5 py-3 text-sm font-bold text-slate-950 hover:bg-cyan-300 disabled:opacity-60"
                 >
-                  {isLocating ? "Locating..." : "â—Ž Find My Location"}
+                  {isLocating ? "Locating..." : "? Find My Location"}
                 </button>
               </div>
             </div>
@@ -494,7 +494,7 @@ export default function MapPage() {
                         lat: Number(report.position[0]),
                         lng: Number(report.position[1]),
                       }}
-                      title={`${report.type} â€” ${report.source}`}
+                      title={`${report.type} — ${report.source}`}
                       onClick={() => setSelectedReport(report)}
                       icon={{
                         path: "M 0,0 m -8,0 a 8,8 0 1,0 16,0 a 8,8 0 1,0 -16,0",
@@ -763,7 +763,7 @@ export default function MapPage() {
                         {report.type}
                       </span>
                       <span className="mt-1 block text-xs text-slate-400">
-                        {report.source} Â· {report.status}
+                        {report.source} · {report.status}
                       </span>
                       <span className="mt-1 block truncate text-xs text-slate-500">
                         {report.description}
@@ -783,7 +783,7 @@ export default function MapPage() {
         </div>
 
         <p className="mt-6 text-center text-xs leading-relaxed text-slate-500">
-          RoadRakshak AI Prototype Â· AI reports are retrieved from the
+          RoadRakshak AI Prototype · AI reports are retrieved from the
           backend database. Sample markers are illustrative only.
         </p>
       </div>

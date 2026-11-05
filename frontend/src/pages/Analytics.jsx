@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Activity, AlertTriangle, CheckCircle2, Clock3, RefreshCw, TrendingUp } from "lucide-react";
 
-const API = "http://127.0.0.1:8000";
+const API = "https://roadrakshak-ai.onrender.com";
 
 export default function Analytics() {
   const [reports, setReports] = useState([]);
