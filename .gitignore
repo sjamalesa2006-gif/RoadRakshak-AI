@@ -1,0 +1,34 @@
+﻿.venv/
+venv/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+backend/data/
+*.db
+*.sqlite3
+
+# Training datasets
+ADDITIONAL_DATASET/
+DATASET/
+FOUR_CLASS_DATASET/
+MODELS/
+PROCESSED_DATASET/
+REAL_WORLD_TEST/
+TRAINING_DATASET/
+TRAINING_DATASET_3CLASS/
+TRAINING_DATASET_4CLASS/
+VALIDATION_DATASET/
+VALIDATION_DATASET_3CLASS/
+VALIDATION_DATASET_4CLASS/
+
+# Unused models
+road_model.keras
+road_model_4class.keras
+road_model_improved.keras
+road_model_original.keras
+
+.DS_Store
