@@ -346,7 +346,7 @@ export default function Detection() {
                     {file.name}
                   </p>
                   <p className="mt-1 text-xs text-slate-500">
-                    {(file.size / (1024 * 1024)).toFixed(2)} MB ·{" "}
+                    {(file.size / (1024 * 1024)).toFixed(2)} MB ï¿½{" "}
                     {source === "camera" ? "Camera capture" : "Gallery image"}
                   </p>
                 </div>
@@ -799,10 +799,10 @@ export default function Detection() {
 
         <footer className="mt-12 border-t border-white/5 pt-6 text-center">
           <p className="text-xs font-semibold tracking-[0.25em] text-slate-600">
-            ROADRAKSHAK AI · INTELLIGENT ROAD SAFETY SYSTEM
+            ROADRAKSHAK AI ï¿½ INTELLIGENT ROAD SAFETY SYSTEM
           </p>
           <p className="mt-2 text-xs text-slate-700">
-            Three-class road surface detection · Backend-connected prototype
+            Three-class road surface detection ï¿½ Backend-connected prototype
           </p>
         </footer>
       </div>

@@ -10,7 +10,7 @@ import {
 
 const API_URL = "https://roadrakshak-ai.onrender.com";
 
-// Illustrative markers only — not real verified road defects.
+// Illustrative markers only ï¿½ not real verified road defects.
 const sampleReports = [
   {
     id: "sample-1",
@@ -494,7 +494,7 @@ export default function MapPage() {
                         lat: Number(report.position[0]),
                         lng: Number(report.position[1]),
                       }}
-                      title={`${report.type} — ${report.source}`}
+                      title={`${report.type} ï¿½ ${report.source}`}
                       onClick={() => setSelectedReport(report)}
                       icon={{
                         path: "M 0,0 m -8,0 a 8,8 0 1,0 16,0 a 8,8 0 1,0 -16,0",
@@ -763,7 +763,7 @@ export default function MapPage() {
                         {report.type}
                       </span>
                       <span className="mt-1 block text-xs text-slate-400">
-                        {report.source} · {report.status}
+                        {report.source} ï¿½ {report.status}
                       </span>
                       <span className="mt-1 block truncate text-xs text-slate-500">
                         {report.description}
@@ -783,7 +783,7 @@ export default function MapPage() {
         </div>
 
         <p className="mt-6 text-center text-xs leading-relaxed text-slate-500">
-          RoadRakshak AI Prototype · AI reports are retrieved from the
+          RoadRakshak AI Prototype ï¿½ AI reports are retrieved from the
           backend database. Sample markers are illustrative only.
         </p>
       </div>
