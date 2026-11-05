@@ -152,6 +152,7 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         "http://localhost:5175",
         "http://127.0.0.1:5175",
+        "https://road-rakshak-m2sk1x1gt-amal-e1d9.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
