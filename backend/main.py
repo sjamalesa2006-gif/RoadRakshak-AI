@@ -2,6 +2,7 @@
 from pathlib import Path
 from io import BytesIO
 from datetime import datetime, timezone
+import os
 import sqlite3
 import uuid
 
@@ -147,16 +148,27 @@ app = FastAPI(
 # ==================================================
 # 6. CORS CONFIGURATION
 # ==================================================
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
+LOCAL_CORS_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
     "http://localhost:5174",
     "http://localhost:5175",
-    "https://road-rakshak-m2sk1x1gt-amal-e1d9.vercel.app",
-    "https://road-rakshak-ap5sguadw-amal-e1d9.vercel.app",
-],
+]
+
+configured_origins = [
+    origin.strip().rstrip("/")
+    for origin in os.getenv("ALLOWED_ORIGINS", "").split(",")
+    if origin.strip()
+]
+
+ALLOWED_ORIGINS = list(dict.fromkeys([
+    *LOCAL_CORS_ORIGINS,
+    *configured_origins,
+]))
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

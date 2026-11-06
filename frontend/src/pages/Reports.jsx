@@ -1,4 +1,4 @@
-import { fetchWithRetry } from "../api";
+import { API_BASE_URL, fetchWithRetry } from "../api";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,8 +19,6 @@ import {
   ShieldCheck,
   Activity,
 } from "lucide-react";
-
-const API_URL = "https://roadrakshak-ai.onrender.com";
 
 const STATUS_OPTIONS = [
   "Pending verification",
@@ -60,7 +58,7 @@ function getImageUrl(url) {
     return url;
   }
 
-  return `${API_URL}${url.startsWith("/") ? "" : "/"}${url}`;
+  return `${API_BASE_URL}${url.startsWith("/") ? "" : "/"}${url}`;
 }
 
 function StatusBadge({ status }) {
@@ -122,7 +120,7 @@ export default function Reports() {
     setError("");
 
     try {
-      const response = await fetchWithRetry(`${API_URL}/reports`);
+      const response = await fetchWithRetry(`${API_BASE_URL}/reports`);
 
       if (!response.ok) {
         throw new Error("Unable to retrieve reports from the server.");
@@ -191,7 +189,7 @@ export default function Reports() {
 
     try {
       const response = await fetch(
-        `${API_URL}/reports/${encodeURIComponent(report.id)}/status`,
+        `${API_BASE_URL}/reports/${encodeURIComponent(report.id)}/status`,
         {
           method: "PATCH",
           headers: {

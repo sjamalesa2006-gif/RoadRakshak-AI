@@ -1,10 +1,9 @@
-import { fetchWithRetry } from "../api";
+import { API_BASE_URL, fetchWithRetry } from "../api";
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, RefreshCw, MapPin, CheckCircle2, Clock3, AlertTriangle } from "lucide-react";
 
-const API = "https://roadrakshak-ai.onrender.com";
 const statuses = ["Pending verification", "Verified", "Resolved"];
 
 export default function Authority() {
@@ -16,7 +15,7 @@ export default function Authority() {
   async function loadReports() {
     try {
       setError("");
-      const response = await fetchWithRetry(`${API}/reports`);
+      const response = await fetchWithRetry(`${API_BASE_URL}/reports`);
       if (!response.ok) throw new Error("Could not load reports");
       const data = await response.json();
       setReports(Array.isArray(data) ? data : data.reports || []);
@@ -36,7 +35,7 @@ export default function Authority() {
   async function updateStatus(id, status) {
     setUpdating(id);
     try {
-      const response = await fetch(`${API}/reports/${id}/status`, {
+      const response = await fetch(`${API_BASE_URL}/reports/${id}/status`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status }),

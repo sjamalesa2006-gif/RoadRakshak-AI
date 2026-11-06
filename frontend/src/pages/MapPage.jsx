@@ -1,4 +1,4 @@
-import { fetchWithRetry } from "../api";
+import { API_BASE_URL, fetchWithRetry } from "../api";
 
 import { useState, useEffect, useCallback } from "react";
 import {
@@ -8,8 +8,6 @@ import {
   InfoWindow,
   useMap,
 } from "@vis.gl/react-google-maps";
-
-const API_URL = "https://roadrakshak-ai.onrender.com";
 
 // Illustrative markers only � not real verified road defects.
 const sampleReports = [
@@ -100,7 +98,7 @@ function normalizeBackendReport(report) {
 
   if (!isValidPosition(position)) return null;
 
-  const baseUrl = API_URL;
+  const baseUrl = API_BASE_URL;
 
   return {
     id: report.id,
@@ -153,7 +151,7 @@ export default function MapPage() {
   // Fetch real AI reports from FastAPI / SQLite.
   const fetchReports = useCallback(async () => {
     try {
-      const response = await fetchWithRetry(`${API_URL}/reports`);
+      const response = await fetchWithRetry(`${API_BASE_URL}/reports`);
 
       if (!response.ok) {
         throw new Error(`Server returned ${response.status}`);

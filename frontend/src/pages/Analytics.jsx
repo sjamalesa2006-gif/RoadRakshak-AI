@@ -1,10 +1,8 @@
-import { fetchWithRetry } from "../api";
+import { API_BASE_URL, fetchWithRetry } from "../api";
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Activity, AlertTriangle, CheckCircle2, Clock3, RefreshCw, TrendingUp } from "lucide-react";
-
-const API = "https://roadrakshak-ai.onrender.com";
 
 export default function Analytics() {
   const [reports, setReports] = useState([]);
@@ -14,7 +12,7 @@ export default function Analytics() {
   async function loadReports() {
     try {
       setError("");
-      const response = await fetchWithRetry(`${API}/reports`);
+      const response = await fetchWithRetry(`${API_BASE_URL}/reports`);
       if (!response.ok) throw new Error("Unable to retrieve analytics data");
       const data = await response.json();
       setReports(Array.isArray(data) ? data : data.reports || []);

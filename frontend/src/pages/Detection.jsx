@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocationContext } from "../context/LocationContext.jsx";
+import { API_BASE_URL } from "../api";
 import {
   Upload,
   ScanSearch,
@@ -20,8 +21,6 @@ import {
   RotateCcw,
   FileCheck2,
 } from "lucide-react";
-
-const API_URL = "https://roadrakshak-ai.onrender.com";
 
 const CLASS_INFO = {
   NORMAL_ROAD: {
@@ -143,7 +142,7 @@ export default function Detection() {
     try {
       setAnalysisStep(0);
 
-      const response = await fetch(`${API_URL}/predict`, {
+      const response = await fetch(`${API_BASE_URL}/predict`, {
         method: "POST",
         body: formData,
       });

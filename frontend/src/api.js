@@ -1,3 +1,7 @@
+export const API_BASE_URL = (
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:8000"
+).replace(/\/+$/, "");
+
 const RETRY_DELAYS_MS = [2000, 4000, 8000, 12000, 15000];
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));

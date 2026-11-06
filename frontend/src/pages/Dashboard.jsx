@@ -1,4 +1,4 @@
-import { fetchWithRetry } from "../api";
+import { API_BASE_URL, fetchWithRetry } from "../api";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -24,8 +24,6 @@ import {
   Database,
   ExternalLink,
 } from "lucide-react";
-
-const API_URL = "https://roadrakshak-ai.onrender.com";
 
 const modules = [
   {
@@ -124,7 +122,7 @@ function Dashboard() {
     try {
       setError("");
 
-      const response = await fetchWithRetry(`${API_URL}/reports`);
+      const response = await fetchWithRetry(`${API_BASE_URL}/reports`);
 
       if (!response.ok) {
         throw new Error("Unable to retrieve reports from the backend.");
@@ -530,7 +528,7 @@ function Dashboard() {
             animate={{ opacity: 1, y: 0 }}
             className="mt-4 rounded-xl border border-red-300 bg-red-50 p-4 text-xs text-red-700"
           >
-            {error} Make sure your FastAPI backend is running at {API_URL}.
+            {error} Make sure your FastAPI backend is running at {API_BASE_URL}.
           </motion.div>
         )}
 
