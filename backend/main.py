@@ -155,6 +155,10 @@ LOCAL_CORS_ORIGINS = [
     "http://localhost:5175",
 ]
 
+PRODUCTION_FRONTEND_ORIGIN = (
+    "https://road-rakshak-ap5sguadw-amal-e1d9.vercel.app"
+)
+
 configured_origins = [
     origin.strip().rstrip("/")
     for origin in os.getenv("ALLOWED_ORIGINS", "").split(",")
@@ -163,6 +167,7 @@ configured_origins = [
 
 ALLOWED_ORIGINS = list(dict.fromkeys([
     *LOCAL_CORS_ORIGINS,
+    PRODUCTION_FRONTEND_ORIGIN,
     *configured_origins,
 ]))
 
