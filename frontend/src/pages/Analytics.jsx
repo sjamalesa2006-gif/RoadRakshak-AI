@@ -1,3 +1,4 @@
+import { fetchWithRetry } from "../api";
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -13,7 +14,7 @@ export default function Analytics() {
   async function loadReports() {
     try {
       setError("");
-      const response = await fetch(`${API}/reports`);
+      const response = await fetchWithRetry(`${API}/reports`);
       if (!response.ok) throw new Error("Unable to retrieve analytics data");
       const data = await response.json();
       setReports(Array.isArray(data) ? data : data.reports || []);

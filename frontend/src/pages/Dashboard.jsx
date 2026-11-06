@@ -1,3 +1,4 @@
+import { fetchWithRetry } from "../api";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
@@ -123,7 +124,7 @@ function Dashboard() {
     try {
       setError("");
 
-      const response = await fetch(`${API_URL}/reports`);
+      const response = await fetchWithRetry(`${API_URL}/reports`);
 
       if (!response.ok) {
         throw new Error("Unable to retrieve reports from the backend.");

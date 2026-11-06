@@ -237,7 +237,8 @@ export default function Detection() {
 
               <p className="mt-4 max-w-2xl leading-7 text-slate-400">
                 Intelligent road-surface analysis powered by a
-                three-class deep-learning model.
+                three-class deep-learning model for normal roads, potholes,
+                and road cracks.
               </p>
             </div>
 
@@ -802,7 +803,7 @@ export default function Detection() {
             ROADRAKSHAK AI � INTELLIGENT ROAD SAFETY SYSTEM
           </p>
           <p className="mt-2 text-xs text-slate-700">
-            Three-class road surface detection � Backend-connected prototype
+            Three-class road surface detection with real image classification
           </p>
         </footer>
       </div>

@@ -50,6 +50,8 @@ VALID_STATUSES = [
     "Resolved"
 ]
 
+MAX_UPLOAD_SIZE_BYTES = 10 * 1024 * 1024
+
 
 # ==================================================
 # 2. LOAD EXISTING THREE-CLASS AI MODEL
@@ -148,13 +150,13 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:5175",
-        "http://127.0.0.1:5175",
-        "https://road-rakshak-m2sk1x1gt-amal-e1d9.vercel.app",
-        "https://road-rakshak-ap5sguadw-amal-e1d9.vercel.app",
-    ],
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://localhost:5175",
+    "https://road-rakshak-m2sk1x1gt-amal-e1d9.vercel.app",
+    "https://road-rakshak-ap5sguadw-amal-e1d9.vercel.app",
+],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -304,6 +306,16 @@ async def predict(
             detail="Uploaded image is empty."
         )
 
+    if len(image_bytes) > MAX_UPLOAD_SIZE_BYTES:
+
+        raise HTTPException(
+            status_code=413,
+            detail=(
+                f"Uploaded image exceeds the maximum size of "
+                f"{MAX_UPLOAD_SIZE_BYTES / (1024 * 1024):.0f}MB."
+            )
+        )
+
     try:
 
         # IMAGE PREPROCESSING
@@ -317,6 +329,10 @@ async def predict(
         image_array = np.array(
             image,
             dtype=np.float32
+        )
+
+        image_array = tf.keras.applications.mobilenet_v2.preprocess_input(
+            image_array
         )
 
         image_array = np.expand_dims(
@@ -367,9 +383,10 @@ async def predict(
 
             "class_probabilities": class_probabilities,
 
-            "pothole_probability": class_probabilities[
-                "ACTUAL_POTHOLES"
-            ],
+            "pothole_probability": class_probabilities.get(
+                "ACTUAL_POTHOLES",
+                0.0
+            ),
 
             "report": None
 

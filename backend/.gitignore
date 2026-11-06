@@ -1,10 +1,10 @@
-# Python
+# Python environment
 .venv/
 venv/
 __pycache__/
 *.pyc
 
-# Frontend
+# Frontend dependencies and builds
 node_modules/
 dist/
 
@@ -13,10 +13,30 @@ dist/
 .env.*
 !.env.example
 
-# Local database and uploads
+# Local database and uploaded reports
 backend/data/
 *.db
 *.sqlite3
 
-# System
+# Large training datasets
+ADDITIONAL_DATASET/
+DATASET/
+FOUR_CLASS_DATASET/
+PROCESSED_DATASET/
+REAL_WORLD_TEST/
+TRAINING_DATASET/
+TRAINING_DATASET_3CLASS/
+TRAINING_DATASET_4CLASS/
+VALIDATION_DATASET/
+VALIDATION_DATASET_3CLASS/
+VALIDATION_DATASET_4CLASS/
+
+# Unused AI models
+*.keras
+*.h5
+
+# Keep only the three-class model
+!road_model_3class.keras
+
+# System files
 .DS_Store

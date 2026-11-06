@@ -1,3 +1,4 @@
+import { fetchWithRetry } from "../api";
 
 import { useState, useEffect, useCallback } from "react";
 import {
@@ -152,7 +153,7 @@ export default function MapPage() {
   // Fetch real AI reports from FastAPI / SQLite.
   const fetchReports = useCallback(async () => {
     try {
-      const response = await fetch(`${API_URL}/reports`);
+      const response = await fetchWithRetry(`${API_URL}/reports`);
 
       if (!response.ok) {
         throw new Error(`Server returned ${response.status}`);

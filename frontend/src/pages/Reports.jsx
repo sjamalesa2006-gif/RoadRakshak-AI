@@ -1,3 +1,4 @@
+import { fetchWithRetry } from "../api";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -121,7 +122,7 @@ export default function Reports() {
     setError("");
 
     try {
-      const response = await fetch(`${API_URL}/reports`);
+      const response = await fetchWithRetry(`${API_URL}/reports`);
 
       if (!response.ok) {
         throw new Error("Unable to retrieve reports from the server.");
