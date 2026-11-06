@@ -331,10 +331,6 @@ async def predict(
             dtype=np.float32
         )
 
-        image_array = tf.keras.applications.mobilenet_v2.preprocess_input(
-            image_array
-        )
-
         image_array = np.expand_dims(
             image_array,
             axis=0
